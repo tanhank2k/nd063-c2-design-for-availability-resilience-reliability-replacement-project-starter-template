@@ -1,0 +1,241 @@
+Using username "ec2-user".
+Authenticating with public key "aws_architect_project1"
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-10-1-10-200 ~]$ yum install mysql
+Error: This command has to be run with superuser privileges (under the root user on most systems).
+[ec2-user@ip-10-1-10-200 ~]$ ^C
+[ec2-user@ip-10-1-10-200 ~]$ ^C
+[ec2-user@ip-10-1-10-200 ~]$ sudo su root
+[root@ip-10-1-10-200 ec2-user]# yum install mysql
+Last metadata expiration check: 0:05:53 ago on Mon Aug 19 15:10:09 2024.
+No match for argument: mysql
+Error: Unable to find a match: mysql
+[root@ip-10-1-10-200 ec2-user]# ^C
+[root@ip-10-1-10-200 ec2-user]# dnf install mysql-community-serverdnf install mysql-community-server
+Last metadata expiration check: 0:07:23 ago on Mon Aug 19 15:10:09 2024.
+No match for argument: mysql-community-serverdnf
+No match for argument: install
+No match for argument: mysql-community-server
+Error: Unable to find a match: mysql-community-serverdnf install mysql-community-server
+[root@ip-10-1-10-200 ec2-user]# dnf -y localinstall https://dev.mysql.com/get/mysql80-community-release-el9-4.noarch.rpm
+Last metadata expiration check: 0:07:42 ago on Mon Aug 19 15:10:09 2024.
+mysql80-community-release-el9-4.noarch.rpm       42 kB/s |  13 kB     00:00
+Dependencies resolved.
+================================================================================
+ Package                        Arch        Version     Repository         Size
+================================================================================
+Installing:
+ mysql80-community-release      noarch      el9-5       @commandline       13 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total size: 13 k
+Installed size: 12 k
+Downloading Packages:
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1
+  Installing       : mysql80-community-release-el9-5.noarch                 1/1
+  Verifying        : mysql80-community-release-el9-5.noarch                 1/1
+
+Installed:
+  mysql80-community-release-el9-5.noarch
+
+Complete!
+[root@ip-10-1-10-200 ec2-user]# dnf -y install mysql mysql-community-client
+MySQL 8.0 Community Server                       16 MB/s | 1.9 MB     00:00
+MySQL Connectors Community                      1.2 MB/s |  61 kB     00:00
+MySQL Tools Community                           7.2 MB/s | 721 kB     00:00
+Dependencies resolved.
+================================================================================
+ Package                         Arch    Version       Repository          Size
+================================================================================
+Installing:
+ mysql-community-client          x86_64  8.0.39-1.el9  mysql80-community  3.4 M
+Installing dependencies:
+ mysql-community-client-plugins  x86_64  8.0.39-1.el9  mysql80-community  1.4 M
+ mysql-community-common          x86_64  8.0.39-1.el9  mysql80-community  556 k
+ mysql-community-libs            x86_64  8.0.39-1.el9  mysql80-community  1.5 M
+
+Transaction Summary
+================================================================================
+Install  4 Packages
+
+Total download size: 6.8 M
+Installed size: 95 M
+Downloading Packages:
+(1/4): mysql-community-client-plugins-8.0.39-1.  16 MB/s | 1.4 MB     00:00
+(2/4): mysql-community-libs-8.0.39-1.el9.x86_64  62 MB/s | 1.5 MB     00:00
+(3/4): mysql-community-common-8.0.39-1.el9.x86_ 4.2 MB/s | 556 kB     00:00
+(4/4): mysql-community-client-8.0.39-1.el9.x86_  13 MB/s | 3.4 MB     00:00
+--------------------------------------------------------------------------------
+Total                                            26 MB/s | 6.8 MB     00:00
+MySQL 8.0 Community Server                      3.0 MB/s | 3.1 kB     00:00
+Importing GPG key 0xA8D3785C:
+ Userid     : "MySQL Release Engineering <mysql-build@oss.oracle.com>"
+ Fingerprint: BCA4 3417 C3B4 85DD 128E C6D4 B7B3 B788 A8D3 785C
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-mysql-2023
+Key imported successfully
+MySQL 8.0 Community Server                      3.0 MB/s | 3.1 kB     00:00
+Importing GPG key 0x3A79BD29:
+ Userid     : "MySQL Release Engineering <mysql-build@oss.oracle.com>"
+ Fingerprint: 859B E8D7 C586 F538 430B 19C2 467B 942D 3A79 BD29
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-mysql-2022
+Key imported successfully
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1
+  Installing       : mysql-community-client-plugins-8.0.39-1.el9.x86_64     1/4
+  Installing       : mysql-community-common-8.0.39-1.el9.x86_64             2/4
+  Installing       : mysql-community-libs-8.0.39-1.el9.x86_64               3/4
+  Running scriptlet: mysql-community-libs-8.0.39-1.el9.x86_64               3/4
+  Installing       : mysql-community-client-8.0.39-1.el9.x86_64             4/4
+  Running scriptlet: mysql-community-client-8.0.39-1.el9.x86_64             4/4
+  Verifying        : mysql-community-client-8.0.39-1.el9.x86_64             1/4
+  Verifying        : mysql-community-client-plugins-8.0.39-1.el9.x86_64     2/4
+  Verifying        : mysql-community-common-8.0.39-1.el9.x86_64             3/4
+  Verifying        : mysql-community-libs-8.0.39-1.el9.x86_64               4/4
+
+Installed:
+  mysql-community-client-8.0.39-1.el9.x86_64
+  mysql-community-client-plugins-8.0.39-1.el9.x86_64
+  mysql-community-common-8.0.39-1.el9.x86_64
+  mysql-community-libs-8.0.39-1.el9.x86_64
+
+Complete!
+[root@ip-10-1-10-200 ec2-user]# dnf install mysql-community-server
+Last metadata expiration check: 0:00:12 ago on Mon Aug 19 15:17:58 2024.
+Dependencies resolved.
+================================================================================
+ Package                         Arch    Version       Repository          Size
+================================================================================
+Installing:
+ mysql-community-server          x86_64  8.0.39-1.el9  mysql80-community   50 M
+Installing dependencies:
+ mysql-community-icu-data-files  x86_64  8.0.39-1.el9  mysql80-community  2.3 M
+
+Transaction Summary
+================================================================================
+Install  2 Packages
+
+Total download size: 52 M
+Installed size: 240 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/2): mysql-community-icu-data-files-8.0.39-1.  26 MB/s | 2.3 MB     00:00
+(2/2): mysql-community-server-8.0.39-1.el9.x86_  47 MB/s |  50 MB     00:01
+--------------------------------------------------------------------------------
+Total                                            49 MB/s |  52 MB     00:01
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                        1/1
+  Installing       : mysql-community-icu-data-files-8.0.39-1.el9.x86_64     1/2
+  Running scriptlet: mysql-community-server-8.0.39-1.el9.x86_64             2/2
+  Installing       : mysql-community-server-8.0.39-1.el9.x86_64             2/2
+  Running scriptlet: mysql-community-server-8.0.39-1.el9.x86_64             2/2
+  Verifying        : mysql-community-icu-data-files-8.0.39-1.el9.x86_64     1/2
+  Verifying        : mysql-community-server-8.0.39-1.el9.x86_64             2/2
+
+Installed:
+  mysql-community-icu-data-files-8.0.39-1.el9.x86_64
+  mysql-community-server-8.0.39-1.el9.x86_64
+
+Complete!
+[root@ip-10-1-10-200 ec2-user]# mysql -h udacity-database-1.c5dhvbtrzzwa.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+Enter password:
+ERROR 1045 (28000): Access denied for user 'admin'@'10.1.10.200' (using password: YES)
+[root@ip-10-1-10-200 ec2-user]# mysql -h udacity-database-1.c5dhvbtrzzwa.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+Enter password:
+ERROR 1045 (28000): Access denied for user 'admin'@'10.1.10.200' (using password: YES)
+[root@ip-10-1-10-200 ec2-user]# mysql -h udacity-database-1.c5dhvbtrzzwa.us-east-1.rds.amazonaws.com -P 3306 -u admin -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.35 Source distribution
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| udacity            |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql>
+mysql> USE udacity;
+Database changed
+mysql> CREATE TABLE pet (name VARCHAR(20), owner VARCHAR(20),
+    ->     ->        species VARCHAR(20), sex CHAR(1), birth DATE, death DATE);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '->        species VARCHAR(20), sex CHAR(1), birth DATE, death DATE)' at line 2
+mysql> CREATE TABLE pet (name VARCHAR(20), owner VARCHAR(20), species VARCHAR(20), sex CHAR(1), birth DATE, death DATE);
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_udacity |
++-------------------+
+| pet               |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> DESCRIBE pet;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| name    | varchar(20) | YES  |     | NULL    |       |
+| owner   | varchar(20) | YES  |     | NULL    |       |
+| species | varchar(20) | YES  |     | NULL    |       |
+| sex     | char(1)     | YES  |     | NULL    |       |
+| birth   | date        | YES  |     | NULL    |       |
+| death   | date        | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> INSERT INTO pet VALUES ('doffin animal','World','doffin animal','f','2024-08-19',NULL);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO pet VALUES ('Cat','Cat','Cat','f','2024-08-19',NULL);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM pet;
++---------------+-------+---------------+------+------------+-------+
+| name          | owner | species       | sex  | birth      | death |
++---------------+-------+---------------+------+------------+-------+
+| doffin animal | World | doffin animal | f    | 2024-08-19 | NULL  |
+| Cat           | Cat   | Cat           | f    | 2024-08-19 | NULL  |
++---------------+-------+---------------+------+------------+-------+
+2 rows in set (0.00 sec)
+
+mysql>
